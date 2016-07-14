@@ -111,7 +111,8 @@ class Shotbow_ChatBot_Bot
     private function special_mew(Shotbow_ChatBot_User $sender, $message)
     {
         $searchString = 'mew';
-        if (in_array($sender->getId(), [319, 268, 358, 1723, 1405450, 327055])
+        if (in_array($sender->getId(), [319, 268, 358, 1723, 1405450, 327055, 282055])
+        /*Grant thy numbers the power of mewery*/  
             && strtolower(substr($message, 0, strlen($searchString))) == $searchString
         ) {
             $possibleResults = [
@@ -128,7 +129,17 @@ class Shotbow_ChatBot_Bot
 
         return false;
     }
-
+private function numbers_broke_something(Shotbow_ChatBot_User $sender, $message)
+    {
+        $searchString = 'break';
+        if ($sender->getId() == 282055)
+            && strtolower(substr($message, 0, strlen($searchString))) == $searchString   {
+                $this->postMessage('N-no! Ttt-this cccann\'t be *crackle* Woe is me!');
+            } else {
+                $this->postMessage('Only the one true breaker of servers can vanquish me!');
+            
+        }
+    }
     protected function commandNameExists($command)
     {
         return $this->commandExists($command) || $this->hiddenCommandExists($command) || $this->aliasExists($command);
